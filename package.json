@@ -1,0 +1,39 @@
+{
+  "name": "nuxt-shop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build --dotenv .env.prod",
+    "dev": "nuxt dev --dotenv .env.dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ext .js,.vue ."
+  },
+  "devDependencies": {
+    "@element-plus/nuxt": "^1.0.7",
+    "@nuxtjs/eslint-config": "^12.0.0",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
+    "@unocss/nuxt": "^0.58.4",
+    "element-plus": "^2.5.5",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "nuxt": "^3.10.0",
+    "nuxt-icon": "^0.6.8",
+    "nuxt-lodash": "^2.5.3",
+    "prettier": "^3.2.5",
+    "prisma": "^5.11.0",
+    "sass": "^1.70.0",
+    "sass-loader": "^14.1.0",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
+    "@prisma/client": "^5.11.0",
+    "@vueuse/nuxt": "^10.7.2",
+    "nuxt-swiper": "^1.2.2"
+  }
+}

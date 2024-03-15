@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model classify {
+  id    Int     @id @default(autoincrement())
+  name  String? @db.VarChar(50)
+  state Int?    @db.TinyInt
+  icon  String? @db.VarChar(255)
+  sort  Int?
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model shop {
+  id            Int     @id
+  sellNo        String? @db.VarChar(255)
+  category_id   Int?
+  name          String? @db.VarChar(255)
+  icon          String? @db.VarChar(255)
+  sort          Int?
+  price         Int?
+  remark        String? @db.LongText
+  shipment_type Int?    @db.TinyInt
+}
