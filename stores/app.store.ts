@@ -15,4 +15,4 @@ function storeSetup() {
   }
 }
 
-export const useAppStore = defineStore('app', storeSetup, { persist: { storage: sessionStorage } })
+export const useAppStore = defineStore('app', storeSetup, { persist: true })

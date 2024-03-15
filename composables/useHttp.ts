@@ -1,12 +1,7 @@
 import { ElMessage } from 'element-plus'
 import type { FetchResponse, SearchParameters } from 'ofetch'
 // import { useUserStore } from '~/stores/user.store'
-
-export interface Result<T> {
-  data: T
-  code: number
-  msg: string
-}
+import type { Result } from '~/types'
 
 function handleError<T>(response: FetchResponse<Result<T>> & FetchResponse<ResponseType>) {
   const err = (text: string) => {
@@ -54,10 +49,10 @@ const fetch = $fetch.create({
     // get方法传递数组形式参数
     options.params = paramsSerializer(options.params)
     // 添加baseURL,nuxt3环境变量要从useRuntimeConfig里面取
-    const {
-      public: { apiBase }
-    } = useRuntimeConfig()
-    options.baseURL = apiBase
+    // const {
+    //   public: { apiBase }
+    // } = useRuntimeConfig()
+    // options.baseURL = apiBase
     // 添加请求头,没登录不携带token
     const userStore = useAppStore()
     if (!userStore.isLogin) return
@@ -66,14 +61,17 @@ const fetch = $fetch.create({
   },
   // 响应拦截
   onResponse({ response }) {
-    if (response.headers.get('content-disposition') && response.status === 200) return response
+    if (response.headers.get('content-disposition') && response.status === 200) {
+      return response._data.data
+    }
+
     // 在这里判断错误
     if (response._data.code !== 200) {
       handleError(response)
       return Promise.reject(response._data)
     }
-    // 成功返回
-    return response._data
+    console.log(response._data.data)
+    return response._data.data
   },
   // 错误处理
   onResponseError({ response }) {
@@ -84,19 +82,19 @@ const fetch = $fetch.create({
 
 // 自动导出
 export const useHttp = {
-  get: <T>(url: string, params?: any, option?: HttpOption<T>) => {
-    return fetch<Result<T>>(url, { method: 'get', params, ...option })
+  get: <T>(url: string, params?: any) => {
+    return fetch<T>(url, { method: 'get', params })
   },
 
-  post: <T>(url: string, body?: any, option?: HttpOption<T>) => {
-    return fetch<Result<T>>(url, { method: 'post', body, ...option })
+  post: <T>(url: string, body?: any) => {
+    return fetch<T>(url, { method: 'post', body })
   },
 
-  put: <T>(url: string, body?: any, option?: HttpOption<T>) => {
-    return fetch<Result<T>>(url, { method: 'put', body, ...option })
+  put: <T>(url: string, body?: any) => {
+    return fetch<T>(url, { method: 'put', body })
   },
 
-  delete: <T>(url: string, body?: any, option?: HttpOption<T>) => {
-    return fetch<Result<T>>(url, { method: 'delete', body, ...option })
+  delete: <T>(url: string, body?: any) => {
+    return fetch<T>(url, { method: 'delete', body })
   }
 }

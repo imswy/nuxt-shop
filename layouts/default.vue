@@ -1,5 +1,5 @@
 <template>
-  <Header></Header>
+  <AppHeader></AppHeader>
   <div class="flex top-16">
     <slot />
   </div>
