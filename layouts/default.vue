@@ -1,7 +1,5 @@
 <template>
-  <AppHeader></AppHeader>
-  <div class="flex top-16">
-    <slot />
-  </div>
+  <h1>这是前台布局</h1>
+  <slot />
 </template>
 <style scoped></style>

@@ -11,3 +11,15 @@ export interface Classify {
   icon: string
   sort: number
 }
+
+export interface Shop {
+  id: number
+  sellNo: string
+  categoryId: number
+  name: string
+  icon: string
+  sort: number
+  price: number
+  remark: string
+  shipmentType: number
+}
