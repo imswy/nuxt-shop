@@ -1,17 +1,8 @@
 <template>
-  <!-- 后台管理系统布局 -->
-  <template v-if="($route.name as any).split('-')[0] === 'admin'">
-    <NuxtLayout name="admin">
+  <div>
+    <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-  </template>
-  <!-- 前台布局 -->
-  <template v-else>
-    <div>
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
-    </div>
-  </template>
+  </div>
+  <script setup lang="ts"></script>
 </template>
-<script setup lang="ts"></script>
