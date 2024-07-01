@@ -4,5 +4,5 @@
       <NuxtPage />
     </NuxtLayout>
   </div>
-  <script setup lang="ts"></script>
 </template>
+<script setup lang="ts"></script>

@@ -2,15 +2,22 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-    '@unocss/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@element-plus/nuxt',
     '@vueuse/nuxt',
     'nuxt-lodash',
     'nuxt-icon',
-    'nuxt-swiper'
+    '@nuxt/image',
+    'nuxt-swiper',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    '@nuxtjs/mdc'
   ],
+  colorMode: {
+    preference: 'system', // default theme
+    dataValue: 'theme', // activate data-theme in <html> tag
+    classSuffix: ''
+  },
   runtimeConfig: {
     public: {
       apiBase: import.meta.env.VITE_APP_BASE_URL
