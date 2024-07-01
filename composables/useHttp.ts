@@ -1,13 +1,13 @@
-import { ElMessage } from 'element-plus'
 import type { FetchResponse, SearchParameters } from 'ofetch'
 // import { useUserStore } from '~/stores/user.store'
 import type { Result } from '~/types'
 
 function handleError<T>(response: FetchResponse<Result<T>> & FetchResponse<ResponseType>) {
   const err = (text: string) => {
-    ElMessage.error({
-      message: response?._data?.msg ?? text
-    })
+    // ElMessage.error({
+    //   message: response?._data?.msg ?? text
+    // })
+    console.error(response?._data?.msg ?? text)
   }
   if (!response._data) {
     err('请求超时，服务器无响应！')

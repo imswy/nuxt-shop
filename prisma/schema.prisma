@@ -17,7 +17,7 @@ model classify {
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
-model shop {
+model product {
   id            Int     @id
   sellNo        String? @db.VarChar(255)
   category_id   Int?
